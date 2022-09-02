@@ -1,0 +1,139 @@
+import org.gradle.api.artifacts.dsl.DependencyHandler
+
+object Modules {
+    const val app = ":app"
+    const val presentation = ":01_presentaion"
+    const val domain = ":02_domain"
+    const val data = ":03_data"
+    const val share = ":04_share"
+    const val hardware = ":05_hadware"
+}
+
+object Libraries {
+
+    const val hilt = "com.google.dagger:hilt-android:${Versions.hiltCore}"
+    //const val hiltLifecycle = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltAndroidX}"
+
+    // hiltKapt
+    const val hiltKapt = "com.google.dagger:hilt-android-compiler:${Versions.hiltCore}"
+    //const val hiltAndroidx = "androidx.hilt:hilt-compiler:${Versions.hiltAndroidX}"
+
+    // hiltAnnoation
+    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltCore}"
+
+    // Coroutine
+    const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$${Versions.coroutine}"
+    const val coroutineCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.coroutine}"
+
+
+    // RETROFIT
+    const val gson = "com.google.code.gson:gson:${Versions.retrofitGson}"
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
+    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofitGson}"
+    const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofitGson}"
+    const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLogging}"
+    const val okhttpUrlConnection = "com.squareup.okhttp3:okhttp-urlconnection:${Versions.okhttpUrlConnection}"
+
+
+    // GLIDE
+    const val glide = "com.github.bumptech.glide:glide:${Versions.glide}"
+    const val glideCompiler = "com.github.bumptech.glide:compiler:${Versions.glide}"
+
+}
+
+object TestLibraries {
+
+}
+
+object AndroidLibraries {
+    // ANDROID
+    val kotlin = "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${Versions.kotlin}"
+
+    val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
+    val materialDesign = "com.google.android.material:material:${Versions.materialDesign}"
+    val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
+
+    val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
+    val lifecycleExtensions = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.lifecycle}"
+    val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
+    val lifecycleRunTime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
+
+    val fragment = "androidx.fragment:fragment-ktx:${Versions.fragmentVersion}"
+
+}
+
+
+object LibraryList {
+    val appLibraries = arrayListOf<String>().apply {
+        add(AndroidLibraries.kotlin)
+        add(AndroidLibraries.appCompat)
+        add(AndroidLibraries.materialDesign)
+        add(AndroidLibraries.coreKtx)
+        add(AndroidLibraries.lifecycleViewModel)
+        add(AndroidLibraries.lifecycleExtensions)
+        add(AndroidLibraries.lifecycleLiveData)
+        add(AndroidLibraries.lifecycleRunTime)
+        add(AndroidLibraries.fragment)
+    }
+
+    val coroutines = arrayListOf<String>().apply {
+        add(Libraries.coroutine)
+        add(Libraries.coroutineCore)
+    }
+
+
+    val HiltLibraries = arrayListOf<String>().apply {
+        add(Libraries.hilt)
+        //add(Libraries.hiltLifecycle)
+    }
+
+    val HiltAnnotation = arrayListOf<String>().apply {
+        add(Libraries.hiltCompiler)
+    }
+
+    val HiltLibraryKapt = arrayListOf<String>().apply {
+        add(Libraries.hiltKapt)
+    }
+
+
+    val RetrofitLibraries = arrayListOf<String>().apply {
+        add(Libraries.gson)
+        add(Libraries.retrofit)
+        add(Libraries.retrofitGsonConverter)
+        add(Libraries.retrofitMoshiConverter)
+        add(Libraries.okhttpLogging)
+        add(Libraries.okhttpUrlConnection)
+    }
+
+
+    val Glide = arrayListOf<String>().apply {
+        add(Libraries.glide)
+        add(Libraries.glideCompiler)
+    }
+
+}
+
+fun DependencyHandler.kaptList(list: List<String>) {
+    list.forEach { dependency ->
+        add("kapt", dependency)
+    }
+}
+
+
+fun DependencyHandler.implementationList(list: List<String>) {
+    list.forEach { dependency ->
+        add("implementation", dependency)
+    }
+}
+
+fun DependencyHandler.androidTestImplementationList(list: List<String>) {
+    list.forEach { dependency ->
+        add("androidTestImplementation", dependency)
+    }
+}
+
+fun DependencyHandler.testImplementationList(list: List<String>) {
+    list.forEach { dependency ->
+        add("testImplementation", dependency)
+    }
+}

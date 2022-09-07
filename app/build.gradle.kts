@@ -84,7 +84,7 @@ dependencies {
     implementation(project(Modules.presentation))
     implementation(project(Modules.domain))
     implementation(project(Modules.data))
-    api(project(Modules.share))
+    implementation(project(Modules.share))
     implementation(project(Modules.hardware))
 
     implementationList(LibraryList.HiltLibraries)
@@ -98,4 +98,6 @@ dependencies {
     implementationList(LibraryList.Glide)
 
     implementation(AndroidLibraries.lifecycleViewModel)
+
+
 }

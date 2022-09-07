@@ -29,10 +29,13 @@ object Libraries {
     // RETROFIT
     const val gson = "com.google.code.gson:gson:${Versions.retrofitGson}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val retrofitGsonConverter = "com.squareup.retrofit2:converter-gson:${Versions.retrofitGson}"
-    const val retrofitMoshiConverter = "com.squareup.retrofit2:converter-moshi:${Versions.retrofitGson}"
+    const val retrofitGsonConverter =
+        "com.squareup.retrofit2:converter-gson:${Versions.retrofitGson}"
+    const val retrofitMoshiConverter =
+        "com.squareup.retrofit2:converter-moshi:${Versions.retrofitGson}"
     const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLogging}"
-    const val okhttpUrlConnection = "com.squareup.okhttp3:okhttp-urlconnection:${Versions.okhttpUrlConnection}"
+    const val okhttpUrlConnection =
+        "com.squareup.okhttp3:okhttp-urlconnection:${Versions.okhttpUrlConnection}"
 
 
     // GLIDE
@@ -42,7 +45,13 @@ object Libraries {
 }
 
 object TestLibraries {
-
+    val junit = "org.junit.jupiter:junit-jupiter-api:${Versions.junit}"
+    val junit_engine = "org.junit.jupiter:junit-jupiter-engine:${Versions.junit}"
+    val runner = "androidx.test.ext:junit:${Versions.runner}"
+    val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
+    val mokito = "org.mockito:mockito-core:${Versions.mokito}"
+    val roboletric = "androidx.test:core:${Versions.roboletric}"
+    val assertj = "org.assertj:assertj-core:${Versions.assertj}"
 }
 
 object AndroidLibraries {
@@ -54,7 +63,8 @@ object AndroidLibraries {
     val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
 
     val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-    val lifecycleExtensions = "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.lifecycle}"
+    val lifecycleExtensions =
+        "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.lifecycle}"
     val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     val lifecycleRunTime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
 
@@ -64,6 +74,17 @@ object AndroidLibraries {
 
 
 object LibraryList {
+    val testImplementation = arrayListOf<String>().apply {
+        add(TestLibraries.junit)
+        add(TestLibraries.espresso)
+        add(TestLibraries.mokito)
+        add(TestLibraries.assertj)
+    }
+
+    val testRuntimeOnly = arrayListOf<String>().apply {
+        add(TestLibraries.espresso)
+    }
+
     val appLibraries = arrayListOf<String>().apply {
         add(AndroidLibraries.kotlin)
         add(AndroidLibraries.appCompat)
@@ -135,5 +156,11 @@ fun DependencyHandler.androidTestImplementationList(list: List<String>) {
 fun DependencyHandler.testImplementationList(list: List<String>) {
     list.forEach { dependency ->
         add("testImplementation", dependency)
+    }
+}
+
+fun DependencyHandler.runTimeOnlyList(list: List<String>) {
+    list.forEach { dependency ->
+        add("testRuntimeOnly", dependency)
     }
 }

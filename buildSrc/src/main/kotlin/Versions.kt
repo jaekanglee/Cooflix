@@ -21,4 +21,12 @@ object Versions {
     const val hiltCore = "2.28.3-alpha"
     const val hiltAndroidX = "1.0.0-alpha02"
 
+
+    val junit ="5.8.1"
+    val runner  = "1.1.3"
+    val espresso= "3.4.0"
+    val mokito  = "3.+"
+    val roboletric = "1.4.0"
+    val assertj = "3.23.1"
+
 }

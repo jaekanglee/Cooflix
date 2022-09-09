@@ -1,10 +1,14 @@
-package com.kjk.couplix
+package com.kjk.couplix.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.kjk.couplix.R
 import com.kjk.couplix.databinding.ActivityMainBinding
 
+/**
+ *  MainActivity에서
+ */
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding

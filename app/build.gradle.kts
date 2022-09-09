@@ -68,15 +68,6 @@ android {
     buildFeatures {
         dataBinding = true
     }
-
-
-
-    repositories {
-        flatDir {
-            dirs("libs")
-        }
-    }
-
 }
 
 
@@ -98,6 +89,4 @@ dependencies {
     implementationList(LibraryList.Glide)
 
     implementation(AndroidLibraries.lifecycleViewModel)
-
-
 }

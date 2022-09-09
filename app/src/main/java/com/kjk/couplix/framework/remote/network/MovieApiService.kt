@@ -8,7 +8,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-private const val BASE_URL = "https://api.themoviedb.org/3"
+private const val BASE_URL = "https://api.themoviedb.org/3/"
 private const val API_KEY = ""
 
 interface MovieApiService {

@@ -18,6 +18,7 @@ class HomeFragment : Fragment() {
     private lateinit var binding: FragmentHomeBinding
 
     /** 이부분 해결해야 한다.
+     * 의존성 주입 부분을 어떻게 해결 해야 하는지 고민이 필요하다.
     private val viewModel by lazy {
         ViewModelProvider(this, HomeViewModelFactory().get(HomeViewModel::class.java)
     }

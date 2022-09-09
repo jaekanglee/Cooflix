@@ -7,6 +7,7 @@ class CreateMoveListParamImpl @Inject constructor() : CreateMoveListParam {
     override suspend fun invoke(param : ParamMovieEntity): HashMap<String, String> =
         param
             .run {
+
                 HashMap<String, String>().apply {
                     if (!language.isNullOrBlank()) put("language", language)
                     if (!region.isNullOrBlank()) put("region", region)

@@ -1,4 +1,10 @@
 package com.kjk.core.interactor
 
-class GetGenres {
+import com.kjk.core.data.GenreRepository
+
+class GetGenres(
+    private val genreRepository: GenreRepository
+) {
+
+    suspend operator fun invoke() = genreRepository.getGenresInfo()
 }

@@ -5,7 +5,7 @@ import com.kjk.core.domain.Movie
 import com.kjk.couplix.framework.remote.network.MovieApi
 import timber.log.Timber
 
-class RemoteMovieDataSource : MovieDataSource {
+class MovieDataSourceImpl : MovieDataSource {
 
     private val movieApi = MovieApi.movieApiService
 

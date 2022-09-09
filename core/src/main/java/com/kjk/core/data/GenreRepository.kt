@@ -1,4 +1,7 @@
 package com.kjk.core.data
 
-class GenreRepository {
+class GenreRepository(
+    private val genreDataSource: GenreDataSource
+) {
+    suspend fun getGenresInfo() = genreDataSource.getGenres()
 }

@@ -1,3 +1,5 @@
+import java.io.FileInputStream
+import java.util.Properties
 
 plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
@@ -16,6 +18,12 @@ android {
     defaultConfig.apply {
         minSdk = AppConfig.minSdk
 
+        val config = rootProject.file("./config/config.properties")
+        val properties = Properties()
+        properties.load(FileInputStream(config))
+        properties.onEach { item ->
+            buildConfigField("String", "${item.key}", "\"${item.value}\"")
+        }
     }
 
     testOptions {

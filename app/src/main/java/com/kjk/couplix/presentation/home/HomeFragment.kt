@@ -7,22 +7,22 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.kjk.core.interactor.GetGenres
-import com.kjk.core.interactor.GetMovies
 import com.kjk.couplix.R
 import com.kjk.couplix.databinding.FragmentHomeBinding
-import com.kjk.couplix.framework.remote.Interactors
+import timber.log.Timber
 
 class HomeFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeBinding
 
-    /** 이부분 해결해야 한다.
+    /**
+     * 이부분 해결해야 한다.
      * 의존성 주입 부분을 어떻게 해결 해야 하는지 고민이 필요하다.
-    private val viewModel by lazy {
-        ViewModelProvider(this, HomeViewModelFactory().get(HomeViewModel::class.java)
-    }
     */
+    private val viewModel by lazy {
+        ViewModelProvider(this, HomeViewModelFactory)
+            .get(HomeViewModel::class.java)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,7 +42,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         initLayout()
         observe()
     }
@@ -52,6 +51,12 @@ class HomeFragment : Fragment() {
     }
 
     private fun observe() {
+        viewModel.genre.observe(viewLifecycleOwner) {
+            Timber.d("${it}")
+        }
 
+        viewModel.movies.observe(viewLifecycleOwner) {
+            Timber.d("${it.size}")
+        }
     }
 }

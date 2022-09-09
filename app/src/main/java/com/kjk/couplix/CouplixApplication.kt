@@ -1,14 +1,17 @@
-package com.kjk.couplix.framework.remote
+package com.kjk.couplix
 
 import android.app.Application
 import com.kjk.core.data.GenreRepository
 import com.kjk.core.data.MovieRepository
 import com.kjk.core.interactor.GetGenres
 import com.kjk.core.interactor.GetMovies
+import com.kjk.couplix.framework.GenreDataSourceImpl
+import com.kjk.couplix.framework.Interactors
+import com.kjk.couplix.framework.MovieDataSourceImpl
 import com.kjk.couplix.presentation.home.HomeViewModelFactory
 import timber.log.Timber
 
-class CouplixAppication : Application() {
+class CouplixApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

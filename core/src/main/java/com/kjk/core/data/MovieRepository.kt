@@ -6,6 +6,5 @@ package com.kjk.core.data
 class MovieRepository(
     private val movieDataSource: MovieDataSource
 ) {
-
     suspend fun getAllMovies() = movieDataSource.getMovies()
 }

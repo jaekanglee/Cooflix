@@ -1,4 +1,4 @@
-package com.kjk.couplix.framework.remote
+package com.kjk.couplix.framework
 
 import com.kjk.core.data.MovieDataSource
 import com.kjk.core.domain.Movie

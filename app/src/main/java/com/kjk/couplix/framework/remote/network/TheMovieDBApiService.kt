@@ -11,7 +11,7 @@ import retrofit2.http.Query
 private const val BASE_URL = "https://api.themoviedb.org/3/"
 private const val API_KEY = "f59b9656cdf5373e3f9ee9400c94d1eb"
 
-interface MovieApiService {
+interface TheMovieDBApiService {
 
     @GET("discover/movie")
     suspend fun getAllMovies(
@@ -36,7 +36,7 @@ object MovieApi {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val movieApiService: MovieApiService by lazy {
-        retrofit.create(MovieApiService::class.java)
+    val movieApiService: TheMovieDBApiService by lazy {
+        retrofit.create(TheMovieDBApiService::class.java)
     }
 }

@@ -1,3 +1,4 @@
+
 plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
     id(GradlePluginId.kotlinAndroid)
@@ -6,10 +7,26 @@ plugins {
     id(GradlePluginId.hilt)
 
 }
-android{
-    compileSdk = AppConfig.compileSdk
-    buildToolsVersion =AppConfig.buildToolsVersion
 
+
+android {
+    compileSdk = AppConfig.compileSdk
+    buildToolsVersion = AppConfig.buildToolsVersion
+
+    defaultConfig.apply {
+        minSdk = AppConfig.minSdk
+
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
+
+    kapt {
+        correctErrorTypes=true
+    }
 }
 
 dependencies {
@@ -21,7 +38,10 @@ dependencies {
     implementationList(LibraryList.HiltLibraries)
     kaptList(LibraryList.HiltLibraryKapt)
 
-
     testImplementationList(LibraryList.testImplementation)
     runTimeOnlyList(LibraryList.testRuntimeOnly)
+
+    testImplementationList(LibraryList.hiltTestsimpl)
+    // ...with Kotlin.
+    kaptTestList(LibraryList.hiltKaptImpl)
 }

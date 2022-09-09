@@ -18,7 +18,8 @@ object Versions {
     const val lifecycle = "2.5.1"
     const val glide = "4.9.0"
 
-    const val hiltCore = "2.28.3-alpha"
+    const val hiltCore = "2.38.1"
+    const val hiltPlugin = "2.39.1"
     const val hiltAndroidX = "1.0.0-alpha02"
 
 
@@ -26,7 +27,7 @@ object Versions {
     val runner  = "1.1.3"
     val espresso= "3.4.0"
     val mokito  = "3.+"
-    val roboletric = "1.4.0"
+    val roboletric = "4.8"
     val assertj = "3.23.1"
 
 }

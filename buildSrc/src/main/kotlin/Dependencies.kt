@@ -51,8 +51,11 @@ object TestLibraries {
     val runner = "androidx.test.ext:junit:${Versions.runner}"
     val espresso = "androidx.test.espresso:espresso-core:${Versions.espresso}"
     val mokito = "org.mockito:mockito-core:${Versions.mokito}"
-    val roboletric = "androidx.test:core:${Versions.roboletric}"
+    val roboletric = "org.robolectric:robolectric:${Versions.roboletric}"
     val assertj = "org.assertj:assertj-core:${Versions.assertj}"
+
+    val hilt = "com.google.dagger:hilt-android-testing:${Versions.hiltCore}"
+    val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hiltCore}"
 }
 
 object AndroidLibraries {
@@ -80,6 +83,15 @@ object LibraryList {
         add(TestLibraries.espresso)
         add(TestLibraries.mokito)
         add(TestLibraries.assertj)
+        add(TestLibraries.roboletric)
+    }
+
+    val hiltTestsimpl = arrayListOf<String>().apply {
+        add(TestLibraries.hilt)
+    }
+
+    val hiltKaptImpl = arrayListOf<String>().apply {
+        add(TestLibraries.hiltCompiler)
     }
 
     val testRuntimeOnly = arrayListOf<String>().apply {
@@ -138,6 +150,12 @@ object LibraryList {
 fun DependencyHandler.kaptList(list: List<String>) {
     list.forEach { dependency ->
         add("kapt", dependency)
+    }
+}
+
+fun DependencyHandler.kaptTestList(list: List<String>) {
+    list.forEach { dependency ->
+        add("kaptTest", dependency)
     }
 }
 

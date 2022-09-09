@@ -26,5 +26,5 @@ object GradlePluginId {
 object GradleClasspath {
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
     const val kotlinGradlePluginClasspath = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    const val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltCore}"
+    const val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltPlugin}"
 }

@@ -1,3 +1,4 @@
+import org.gradle.api.artifacts.Dependency
 import org.gradle.api.artifacts.dsl.DependencyHandler
 
 object Modules {
@@ -162,5 +163,11 @@ fun DependencyHandler.testImplementationList(list: List<String>) {
 fun DependencyHandler.runTimeOnlyList(list: List<String>) {
     list.forEach { dependency ->
         add("testRuntimeOnly", dependency)
+    }
+}
+
+fun DependencyHandler.apiList(list: List<String>) {
+    list.forEach { dependency ->
+        add("api", dependency)
     }
 }

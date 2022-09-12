@@ -1,14 +1,18 @@
 package com.cooplix.remote.api
 
+import com.cooplix.remote.dto.response.MovieGenresDto
 import com.cooplix.remote.dto.response.MovieResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface MovieService {
     @GET("/discover/movie")
-    fun getMovie(
-        @Query("api_key") apiKey: String,
-        @Query("language") language: String,
-        @Query("page") page: Int
+    suspend fun getMovie(
+        @Query("api_key") apiKey: String
     ): MovieResponseDto
+
+    @GET("/genre/movie/list")
+    suspend fun getMovieGenres(
+        @Query("api_key") apiKey: String
+    ): MovieGenresDto
 }

@@ -9,6 +9,5 @@ android {
 
 dependencies {
     implementation(project(Module.CORE))
-    implementation(project(Module.DATA))
     implementation(project(Module.DOMAIN))
 }

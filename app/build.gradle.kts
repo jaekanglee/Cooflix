@@ -1,6 +1,8 @@
 plugins {
     id(GradlePlugin.ANDROID_APPLICATION)
     id(GradlePlugin.KOTLIN_ANDROID)
+    id(GradlePlugin.HILT)
+    kotlin(GradlePlugin.KAPT)
 }
 
 android {
@@ -42,7 +44,7 @@ dependencies {
     implementation(Libraries.APPCOMPAT)
     implementation(Libraries.MATERIAL)
     implementation(Libraries.CONSTRAINTLAYOUT)
-    testImplementation(TestLibraries.JUNIT)
-    androidTestImplementation(TestLibraries.ANDROID_JUNIT)
-    androidTestImplementation(TestLibraries.ESPRESSO)
+
+    implementation(Libraries.HILT)
+    kapt(Libraries.HILT_ANNOTATION)
 }

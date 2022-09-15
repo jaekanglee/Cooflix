@@ -9,7 +9,7 @@ import javax.inject.Inject
 class MovieRepositoryImpl @Inject constructor(
     private val apiService: ApiService
 ) : MovieRepository {
-    override fun getMovieList(): MovieListEntity {
+    override suspend fun getMovieList(): MovieListEntity {
         return apiService.getMovieList().body().toEntity()
     }
 }

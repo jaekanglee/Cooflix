@@ -15,7 +15,7 @@ class MovieRepositoryImpl(private val movieService: MovieService): MovieReposito
         val movies = movieService.getMovie().toMovies(getMovieGenres())
 
         return movies?.groupBy {
-            it.genres.firstOrNull() ?: return@groupBy MovieGenre(-1, "")
+            it.genres.firstOrNull() ?: return emptyMap()
         } ?: emptyMap()
     }
 

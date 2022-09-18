@@ -14,7 +14,9 @@ class MovieRepositoryImpl(private val movieService: MovieService): MovieReposito
     override suspend fun getMoviesGroup(): Map<MovieGenre, List<Movie>> {
         val movies = movieService.getMovie().toMovies(getMovieGenres())
 
-        return movies?.groupBy { it.genres[0] } ?: emptyMap()
+        return movies?.groupBy {
+            it.genres.firstOrNull() ?: return@groupBy MovieGenre(-1, "")
+        } ?: emptyMap()
     }
 
     private suspend fun getMovieGenres(): List<MovieGenre>? = movieService.getMovieGenres().genres?.mapNotNull {

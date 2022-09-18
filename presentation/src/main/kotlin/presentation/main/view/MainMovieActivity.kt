@@ -6,15 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import com.hjiee.presentation.databinding.ActivityMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 import presentation.main.item.group.MovieGroupListAdapter
-import presentation.main.viewmodel.MainViewModel
+import presentation.main.viewmodel.MainMovieViewModel
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainMovieActivity : AppCompatActivity() {
 
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by viewModels<MainMovieViewModel>()
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater).apply {
-            lifecycleOwner = this@MainActivity
+            lifecycleOwner = this@MainMovieActivity
         }
     }
     private val listAdapter = MovieGroupListAdapter()
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         initView()
         initObserver()
-        viewModel.load()
+        viewModel.loadMovieList()
     }
 
     private fun initView() {

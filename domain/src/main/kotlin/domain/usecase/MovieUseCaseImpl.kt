@@ -6,10 +6,6 @@ import javax.inject.Inject
 
 class MovieUseCaseImpl @Inject constructor(
     private val repository: MovieRepository
-) : MovieUseCase {
-
-    suspend fun execute(): MovieListEntity {
-        return repository.getMovieList()
-    }
-
+) {
+    suspend fun execute(): MovieListEntity = repository.getMovieList()
 }

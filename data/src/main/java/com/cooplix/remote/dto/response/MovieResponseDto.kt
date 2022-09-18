@@ -12,9 +12,10 @@ data class MovieResponseDto(
 ) {
     fun toMovies(movieGenres: List<MovieGenre>?): List<Movie>? {
         return this.results?.mapNotNull { movieDto ->
-            movieDto.toMovie(movieGenres?.filter { movieGenre ->
+            val filteringMovieGenres = movieGenres?.filter { movieGenre ->
                 movieDto.genreIds?.any { it == movieGenre.id } ?: false
-            })
+            }?.takeIf { it.isNotEmpty() }
+            movieDto.toMovie(filteringMovieGenres)
         }
     }
 

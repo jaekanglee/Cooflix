@@ -5,18 +5,18 @@ import com.squareup.moshi.Json
 
 data class MovieGenresDto(
     @Json(name="genres")
-    val genres: List<MovieGenreDto>
+    val genres: List<MovieGenreDto>?
 ) {
     data class MovieGenreDto(
         @Json(name="id")
-        val id: Int,
+        val id: Int?,
         @Json(name="name")
-        val name: String
+        val name: String?
     ) {
-        fun toMovieGenre(): MovieGenre {
+        fun toMovieGenre(): MovieGenre? {
             return MovieGenre(
-                id = this.id,
-                name = this.name
+                id = this.id ?: return null,
+                name = this.name ?: return null
             )
         }
     }

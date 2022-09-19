@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.ppizil.presentaion.movielist.MovieCategories
-import com.ppizil.presentaion.movielist.ViewMovieModel
+import com.ppizil.presentaion.model.movielist.ViewMovieModel
 import com.ppizil.presentaion.movielist.mapToStringType
 
 @BindingAdapter("setImagePoster", "requestManager")

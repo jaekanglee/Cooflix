@@ -3,7 +3,7 @@ package com.ppizil.cooflix.movielist.holder
 import com.bumptech.glide.RequestManager
 import com.ppizil.cooflix.base.BaseListAdapter
 import com.ppizil.cooflix.databinding.ItemMovieContentsBinding
-import com.ppizil.presentaion.movielist.ViewMovieModel
+import com.ppizil.presentaion.model.movielist.ViewMovieModel
 
 class MovieContentsHolder(
     private val binding: ItemMovieContentsBinding,

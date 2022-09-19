@@ -2,7 +2,11 @@ package com.ppizil.presentaion.movielist
 
 import androidx.lifecycle.viewModelScope
 import com.ppizil.domain.usecase.FetchMovieList
+import com.ppizil.domain.usecase.FilterMovieContents
 import com.ppizil.presentaion.base.BaseViewModel
+import com.ppizil.presentaion.model.movielist.MovieCategoryModel
+import com.ppizil.presentaion.model.movielist.MovieModel
+import com.ppizil.presentaion.model.movielist.ViewMovieModel
 import com.ppizil.share.runSuspendCatching
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -12,7 +16,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieListVm @Inject constructor(
-    private val fetchMovieListUsecase: FetchMovieList
+    private val fetchMovieListUsecase: FetchMovieList,
+    private val filterMovieContents: FilterMovieContents
 ) : BaseViewModel<MovieListState>() {
 
     private val _movies = MutableStateFlow<List<MovieCategoryModel>>(emptyList())
@@ -32,33 +37,18 @@ class MovieListVm @Inject constructor(
                     fetchMovieListUsecase(this)
                 }
                 .run {
-                    map {
-                        it.mapToPresent()
-                    }
+                    filterMovieContents(this)
+                }
+                .map {
+                    it.mapToPresent()
                 }
         }
             .onSuccess {
-                seperateCateogyr(it)
+                _movies.value = it
+                setUiState(MovieListState.Success(it))
             }
             .onFailure {
 
-            }
-    }
-
-
-    private fun seperateCateogyr(item: List<ViewMovieModel>) = viewModelScope.launch {
-        item.groupBy {
-            it.category
-        }
-            .map {
-                MovieCategoryModel(
-                    category = it.key,
-                    item = it.value
-                )
-            }
-            .run {
-                setUiState(MovieListState.Success(this))
-                _movies.value = this
             }
     }
 }

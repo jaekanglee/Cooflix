@@ -25,4 +25,8 @@ object DomainModule {
         createMoveListParam,
         repo
     )
+
+    @Provides
+    @Singleton
+    fun provideFilterringMovieList() : FilterMovieContents = FilterMovieContentsImpl()
 }

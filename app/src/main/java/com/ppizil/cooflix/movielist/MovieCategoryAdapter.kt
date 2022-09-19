@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.bumptech.glide.RequestManager
 import com.ppizil.cooflix.databinding.ItemMovieCategorySectionBinding
 import com.ppizil.cooflix.movielist.holder.MovieCategoryHolder
-import com.ppizil.presentaion.movielist.MovieCategoryModel
+import com.ppizil.presentaion.model.movielist.MovieCategoryModel
 
 class MovieCategoryAdapter(
     private val requestManager: RequestManager

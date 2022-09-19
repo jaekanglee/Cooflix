@@ -2,8 +2,8 @@ package com.ppizil.domain
 
 import com.ppizil.domain.model.ParamMovieEntity
 import com.ppizil.domain.repository.MovieRepository
-import com.ppizil.domain.usecase.CreateMoveListParam
-import com.ppizil.domain.usecase.CreateMoveListParamImpl
+import com.ppizil.domain.usecase.createMovieListParam
+import com.ppizil.domain.usecase.createMovieListParamImpl
 import com.ppizil.domain.usecase.FetchMovieList
 import com.ppizil.domain.usecase.FetchMovieListImpl
 import kotlinx.coroutines.CoroutineScope
@@ -20,55 +20,55 @@ import org.mockito.Mockito
 
 class MovieTest {
 
-    lateinit var createMoveListParam: CreateMoveListParam
+    lateinit var createMovieListParam: createMovieListParam
     lateinit var fetchMovieList: FetchMovieList
 
     @Before
     fun setUp() {
-        createMoveListParam = CreateMoveListParamImpl()
+        createMovieListParam = createMovieListParamImpl()
         fetchMovieList = FetchMovieListImpl(
-            createMoveListParam,
+            createMovieListParam,
             Mockito.mock(MovieRepository::class.java)
         )
     }
 
     @Test
-    fun `01_createMoveListParam()는 language!=null일때 Map에 추가한다`() = runBlocking {
+    fun `01_createMovieListParam()는 language!=null일때 Map에 추가한다`() = runBlocking {
         val input = ParamMovieEntity(
             language = "en-US",
             region = null
         )
-        val result = createMoveListParam(input)
+        val result = createMovieListParam(input)
         Assertions.assertEquals(result["language"] != null, true)
     }
 
     @Test
-    fun `02_createMoveListParam()는 language==null일때 Hashmap에 추가하지 않는다`() = runBlocking {
+    fun `02_createMovieListParam()는 language==null일때 Hashmap에 추가하지 않는다`() = runBlocking {
         val input = ParamMovieEntity(
             language = null,
             region = null
         )
-        val result = createMoveListParam(input)
+        val result = createMovieListParam(input)
         Assertions.assertEquals(result["language"], null)
     }
 
     @Test
-    fun `03_createMoveListParam()는 region!=null일때 Map에 추가한다`() = runBlocking {
+    fun `03_createMovieListParam()는 region!=null일때 Map에 추가한다`() = runBlocking {
         val input = ParamMovieEntity(
             language = "en-US",
             region = null
         )
-        val result = createMoveListParam(input)
+        val result = createMovieListParam(input)
         Assertions.assertEquals(result["region"] == null, true)
     }
 
     @Test
-    fun `04_createMoveListParam()는 region==null일때 Hashmap에 추가하지 않는다`() = runBlocking {
+    fun `04_createMovieListParam()는 region==null일때 Hashmap에 추가하지 않는다`() = runBlocking {
         val input = ParamMovieEntity(
             language = null,
             region = null
         )
-        val result = createMoveListParam(input)
+        val result = createMovieListParam(input)
         Assertions.assertEquals(result["region"], null)
     }
 

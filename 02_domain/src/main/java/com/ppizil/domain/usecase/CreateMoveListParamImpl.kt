@@ -3,7 +3,7 @@ package com.ppizil.domain.usecase
 import com.ppizil.domain.model.ParamMovieEntity
 import javax.inject.Inject
 
-class CreateMoveListParamImpl @Inject constructor() : CreateMoveListParam {
+class createMovieListParamImpl @Inject constructor() : createMovieListParam {
     override suspend fun invoke(param : ParamMovieEntity): HashMap<String, String> =
         param
             .run {

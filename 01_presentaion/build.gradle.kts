@@ -19,4 +19,6 @@ dependencies {
     implementationList(LibraryList.HiltLibraries)
     kaptList(LibraryList.HiltLibraryKapt)
 
+    implementationList(LibraryList.lifecycle)
+
 }

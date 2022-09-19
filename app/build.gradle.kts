@@ -4,7 +4,7 @@ plugins {
     id(GradlePluginId.kotlinKapt)
     id(GradlePluginId.kotlinAndroidExtensions)
     id(GradlePluginId.hilt)
-    //id("androidx.navigation.safeargs.kotlin")
+    id(GradlePluginId.safeArg)
 }
 
 
@@ -68,15 +68,6 @@ android {
     buildFeatures {
         dataBinding = true
     }
-
-
-
-    repositories {
-        flatDir {
-            dirs("libs")
-        }
-    }
-
 }
 
 
@@ -84,7 +75,7 @@ dependencies {
     implementation(project(Modules.presentation))
     implementation(project(Modules.domain))
     implementation(project(Modules.data))
-    api(project(Modules.share))
+    implementation(project(Modules.share))
     implementation(project(Modules.hardware))
 
     implementationList(LibraryList.HiltLibraries)
@@ -94,6 +85,7 @@ dependencies {
     //implementationList(LibraryList.NavigationLibraries)
 
     implementationList(LibraryList.appLibraries)
+    implementationList(LibraryList.lifecycle)
 
     implementationList(LibraryList.Glide)
 

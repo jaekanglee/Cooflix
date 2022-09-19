@@ -17,4 +17,7 @@ dependencies {
 
     implementationList(LibraryList.HiltLibraries)
     kaptList(LibraryList.HiltLibraryKapt)
+
+    testImplementationList(LibraryList.testImplementation)
+    runTimeOnlyList(LibraryList.testRuntimeOnly)
 }

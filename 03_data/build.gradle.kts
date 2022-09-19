@@ -1,3 +1,6 @@
+import java.io.FileInputStream
+import java.util.Properties
+
 plugins {
     id(GradlePluginId.ANDROID_LIBRARY)
     id(GradlePluginId.kotlinAndroid)
@@ -6,19 +9,44 @@ plugins {
     id(GradlePluginId.hilt)
 
 }
-android{
-    compileSdk = AppConfig.compileSdk
-    buildToolsVersion =AppConfig.buildToolsVersion
 
+
+android {
+    compileSdk = AppConfig.compileSdk
+    buildToolsVersion = AppConfig.buildToolsVersion
+
+    defaultConfig.apply {
+        minSdk = AppConfig.minSdk
+
+        val config = rootProject.file("./config/config.properties")
+        val properties = Properties()
+        properties.load(FileInputStream(config))
+        properties.onEach { item ->
+            buildConfigField("String", "${item.key}", "\"${item.value}\"")
+        }
+    }
+
+    testOptions {
+        unitTests {
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
     implementation(project(Modules.domain))
-    api(project(Modules.share))
+    implementation(project(Modules.share))
 
-    implementationList(LibraryList.RetrofitLibraries)
+    apiList(LibraryList.RetrofitLibraries)
+
 
     implementationList(LibraryList.HiltLibraries)
-    kaptList(LibraryList.HiltLibraryKapt)
+    kaptList (LibraryList.HiltLibraryKapt)
 
+    testImplementationList(LibraryList.testImplementation)
+    runTimeOnlyList(LibraryList.testRuntimeOnly)
+
+    testImplementationList(LibraryList.hiltTestsimpl)
+    // ...with Kotlin.
+    kaptTestList(LibraryList.hiltKaptImpl)
 }

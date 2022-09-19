@@ -20,11 +20,13 @@ object GradlePluginId {
     const val kotlinKapt = "kotlin-kapt"
     const val kotlinAndroidExtensions = "kotlin-parcelize"
     const val hilt = "dagger.hilt.android.plugin"
+    const val safeArg = "androidx.navigation.safeargs.kotlin"
 }
 
 
 object GradleClasspath {
     const val androidGradlePlugin = "com.android.tools.build:gradle:${Versions.gradlePlugin}"
     const val kotlinGradlePluginClasspath = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Versions.kotlin}"
-    const val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltCore}"
+    const val hiltGradlePlugin = "com.google.dagger:hilt-android-gradle-plugin:${Versions.hiltPlugin}"
+    const val safeArgNavi = "androidx.navigation:navigation-safe-args-gradle-plugin:${Versions.navigation}"
 }

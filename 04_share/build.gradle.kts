@@ -12,5 +12,5 @@ android {
 }
 
 dependencies {
-    implementationList(LibraryList.coroutines)
+    apiList(LibraryList.coroutines)
 }

@@ -1,4 +1,4 @@
-package com.ppizil.service
+package com.ppizil.data.service
 
 import com.ppizil.data.model.movie.ResponseMovieDto
 import retrofit2.Response

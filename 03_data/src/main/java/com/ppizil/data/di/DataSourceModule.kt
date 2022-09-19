@@ -2,7 +2,7 @@ package com.ppizil.data.di
 
 import com.ppizil.data.datasource.MovieRemoteSource
 import com.ppizil.data.datasource.MovieRemoteSourceImpl
-import com.ppizil.service.MovieRemoteService
+import com.ppizil.data.service.MovieRemoteService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

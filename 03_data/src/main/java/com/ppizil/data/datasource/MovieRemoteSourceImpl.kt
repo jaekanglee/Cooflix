@@ -1,8 +1,8 @@
 package com.ppizil.data.datasource
 
 import com.ppizil.data.model.movie.ResponseMovieDto
+import com.ppizil.data.service.MovieRemoteService
 import com.ppizil.data.util.perseToObject
-import com.ppizil.service.MovieRemoteService
 import com.ppizil.share.runSuspendCatching
 import javax.inject.Inject
 

@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.ppizil.presentaion.movielist.MovieCategoryModel" />
+            type="com.ppizil.presentaion.model.movielist.MovieCategoryModel" />
 
         <variable
             name="requestManager"

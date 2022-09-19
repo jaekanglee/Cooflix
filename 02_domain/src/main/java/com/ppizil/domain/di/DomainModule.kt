@@ -1,10 +1,7 @@
 package com.ppizil.domain.di
 
 import com.ppizil.domain.repository.MovieRepository
-import com.ppizil.domain.usecase.CreateMoveListParam
-import com.ppizil.domain.usecase.CreateMoveListParamImpl
-import com.ppizil.domain.usecase.FetchMovieList
-import com.ppizil.domain.usecase.FetchMovieListImpl
+import com.ppizil.domain.usecase.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,15 +14,19 @@ object DomainModule {
 
     @Provides
     @Singleton
-    fun provideCreateMoveListParam(): CreateMoveListParam = CreateMoveListParamImpl()
+    fun provideCreateMoveListParam(): CreateMovieListParam =CreateMovieListParamImpl()
 
     @Provides
     @Singleton
     fun provideFetchMovieList(
-        createMoveListParam : CreateMoveListParam,
+        createMoveListParam : CreateMovieListParam,
         repo : MovieRepository
     ): FetchMovieList = FetchMovieListImpl(
         createMoveListParam,
         repo
     )
+
+    @Provides
+    @Singleton
+    fun provideFilterringMovieList() : FilterMovieContents = FilterMovieContentsImpl()
 }

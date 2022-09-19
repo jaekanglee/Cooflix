@@ -13,5 +13,5 @@ fun MovieDto.mapToDomain() = ResultMovieEntity(
     title = title ?: "-",
     desc = overview ?: "-",
     imageUrl = poster_path ?: "-",
-    category = genre_ids?.first() ?: -1 // -1은 분류되지 않은 장르 즉 Erorr
+    category = genre_ids?.firstOrNull() ?: -1 // -1은 분류되지 않은 장르 즉 Erorr
 )

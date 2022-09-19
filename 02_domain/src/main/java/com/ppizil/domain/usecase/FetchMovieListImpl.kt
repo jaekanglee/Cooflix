@@ -6,7 +6,7 @@ import com.ppizil.domain.repository.MovieRepository
 import javax.inject.Inject
 
 class FetchMovieListImpl @Inject constructor(
-    private val createMovieListParam: createMovieListParam,
+    private val createMovieListParam: CreateMovieListParam,
     private val repo: MovieRepository
 ) : FetchMovieList {
     override suspend fun invoke(param: ParamMovieEntity): List<ResultMovieEntity> =

@@ -31,20 +31,17 @@ android {
             isIncludeAndroidResources = true
         }
     }
-
-    kapt {
-        correctErrorTypes=true
-    }
 }
 
 dependencies {
     implementation(project(Modules.domain))
-    api(project(Modules.share))
+    implementation(project(Modules.share))
 
-    implementationList(LibraryList.RetrofitLibraries)
+    apiList(LibraryList.RetrofitLibraries)
+
 
     implementationList(LibraryList.HiltLibraries)
-    kaptList(LibraryList.HiltLibraryKapt)
+    kaptList (LibraryList.HiltLibraryKapt)
 
     testImplementationList(LibraryList.testImplementation)
     runTimeOnlyList(LibraryList.testRuntimeOnly)

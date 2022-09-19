@@ -1,6 +1,6 @@
 package com.ppizil.data.di
 
-import com.ppizil.service.MovieRemoteService
+import com.ppizil.data.service.MovieRemoteService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +14,6 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
-
 
     @Provides
     @Singleton
@@ -35,7 +34,7 @@ object NetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(
-        client : OkHttpClient
+        client: OkHttpClient
     ): Retrofit =
         Retrofit
             .Builder()
@@ -45,11 +44,10 @@ object NetworkModule {
             .build()
 
 
-
     @Provides
     @Singleton
     fun provideMovieRemoteService(
         retrofit: Retrofit
-    ) : MovieRemoteService =
+    ): MovieRemoteService =
         retrofit.create(MovieRemoteService::class.java)
 }

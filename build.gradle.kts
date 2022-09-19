@@ -8,7 +8,7 @@ buildscript {
         classpath(GradleClasspath.androidGradlePlugin)
         classpath(GradleClasspath.kotlinGradlePluginClasspath)
         classpath(GradleClasspath.hiltGradlePlugin)
-        //classpath(GradleClasspath.safeArgs)
+        classpath(GradleClasspath.safeArgNavi)
     }
 }
 

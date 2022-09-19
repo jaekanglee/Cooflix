@@ -16,11 +16,11 @@ object Libraries {
     //const val hiltLifecycle = "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.hiltAndroidX}"
 
     // hiltKapt
-    const val hiltKapt = "com.google.dagger:hilt-android-compiler:${Versions.hiltCore}"
+    const val hiltKapt = "com.google.dagger:hilt-compiler:${Versions.hiltCore}"
     //const val hiltAndroidx = "androidx.hilt:hilt-compiler:${Versions.hiltAndroidX}"
 
     // hiltAnnoation
-    const val hiltCompiler = "com.google.dagger:hilt-android-compiler:${Versions.hiltCore}"
+    const val hiltCompiler = "com.google.dagger:hilt-compiler:${Versions.hiltCore}"
 
     // Coroutine
     const val coroutine = "org.jetbrains.kotlinx:kotlinx-coroutines-android:$${Versions.coroutine}"
@@ -28,15 +28,9 @@ object Libraries {
 
 
     // RETROFIT
-    const val gson = "com.google.code.gson:gson:${Versions.retrofitGson}"
+    const val gson = "com.squareup.retrofit2:converter-gson:${Versions.retrofit}"
     const val retrofit = "com.squareup.retrofit2:retrofit:${Versions.retrofit}"
-    const val retrofitGsonConverter =
-        "com.squareup.retrofit2:converter-gson:${Versions.retrofitGson}"
-    const val retrofitMoshiConverter =
-        "com.squareup.retrofit2:converter-moshi:${Versions.retrofitGson}"
     const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttpLogging}"
-    const val okhttpUrlConnection =
-        "com.squareup.okhttp3:okhttp-urlconnection:${Versions.okhttpUrlConnection}"
 
 
     // GLIDE
@@ -67,12 +61,12 @@ object AndroidLibraries {
     val coreKtx = "androidx.core:core-ktx:${Versions.coreKtx}"
 
     val lifecycleViewModel = "androidx.lifecycle:lifecycle-viewmodel-ktx:${Versions.lifecycle}"
-    val lifecycleExtensions =
-        "androidx.lifecycle:lifecycle-viewmodel-savedstate:${Versions.lifecycle}"
-    val lifecycleLiveData = "androidx.lifecycle:lifecycle-livedata-ktx:${Versions.lifecycle}"
     val lifecycleRunTime = "androidx.lifecycle:lifecycle-runtime-ktx:${Versions.lifecycle}"
 
+
     val fragment = "androidx.fragment:fragment-ktx:${Versions.fragmentVersion}"
+
+    val navigation = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
 
 }
 
@@ -103,11 +97,13 @@ object LibraryList {
         add(AndroidLibraries.appCompat)
         add(AndroidLibraries.materialDesign)
         add(AndroidLibraries.coreKtx)
-        add(AndroidLibraries.lifecycleViewModel)
-        add(AndroidLibraries.lifecycleExtensions)
-        add(AndroidLibraries.lifecycleLiveData)
-        add(AndroidLibraries.lifecycleRunTime)
         add(AndroidLibraries.fragment)
+        add(AndroidLibraries.navigation)
+    }
+
+    val lifecycle = arrayListOf<String>().apply {
+        add(AndroidLibraries.lifecycleViewModel)
+        add(AndroidLibraries.lifecycleRunTime)
     }
 
     val coroutines = arrayListOf<String>().apply {
@@ -131,12 +127,9 @@ object LibraryList {
 
 
     val RetrofitLibraries = arrayListOf<String>().apply {
-        add(Libraries.gson)
         add(Libraries.retrofit)
-        add(Libraries.retrofitGsonConverter)
-        add(Libraries.retrofitMoshiConverter)
+        add(Libraries.gson)
         add(Libraries.okhttpLogging)
-        add(Libraries.okhttpUrlConnection)
     }
 
 

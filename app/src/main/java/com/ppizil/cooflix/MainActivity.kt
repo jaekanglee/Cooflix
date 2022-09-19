@@ -1,11 +1,17 @@
 package com.ppizil.cooflix
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.ppizil.cooflix.base.BaseActivity
+import com.ppizil.cooflix.databinding.ActivityMainBinding
+import dagger.hilt.android.AndroidEntryPoint
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+@AndroidEntryPoint
+class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
+    override fun setupBinding() {
+
     }
+
+    override fun setupObserving() {
+
+    }
+
 }

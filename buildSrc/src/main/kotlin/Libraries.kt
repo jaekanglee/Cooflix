@@ -24,6 +24,8 @@ object Libraries {
     const val HILT = "com.google.dagger:hilt-android:${Versions.HILT}"
     const val HILT_ANNOTATION = "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
 
+    const val GLIDE = "com.github.bumptech.glide:glide:${Versions.GLIDE}"
+
 }
 
 object TestLibraries {
@@ -33,6 +35,7 @@ object TestLibraries {
 }
 
 object Versions {
+    const val KOTLIN = "1.7.0"
     const val CORE_KTX = "1.7.0"
     const val APPCOMPAT = "1.5.0"
     const val MATERIAL = "1.6.1"
@@ -47,4 +50,5 @@ object Versions {
     const val GSON = "2.8.6"
     const val OK_HTTP = "4.10.0"
     const val ACTIVITY_KTX = "1.5.1"
+    const val GLIDE = "4.13.2"
 }

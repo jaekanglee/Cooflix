@@ -2,6 +2,7 @@ package data.model.movie
 
 import core.orFalse
 import core.orZero
+import domain.model.GenreItemEntity
 import domain.model.MovieItemEntity
 import domain.model.MovieListEntity
 
@@ -31,6 +32,15 @@ fun List<MovieItemResponse>?.toEntity(): List<MovieItemEntity> {
             video = it.video.orFalse(),
             voteAverage = it.voteAverage.orZero(),
             voteCount = it.voteCount.orZero(),
+        )
+    }.orEmpty()
+}
+
+fun GenreListResponse?.toEntity(): List<GenreItemEntity> {
+    return this?.genres?.map {
+        GenreItemEntity(
+            id = it.id.orZero(),
+            name = it.name.orEmpty()
         )
     }.orEmpty()
 }

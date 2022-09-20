@@ -1,6 +1,8 @@
 plugins {
     id(GradlePlugin.ANDROID_APPLICATION)
     id(GradlePlugin.KOTLIN_ANDROID)
+    id(GradlePlugin.HILT)
+    kotlin(GradlePlugin.KAPT)
 }
 
 android {
@@ -30,6 +32,10 @@ android {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
@@ -42,7 +48,7 @@ dependencies {
     implementation(Libraries.APPCOMPAT)
     implementation(Libraries.MATERIAL)
     implementation(Libraries.CONSTRAINTLAYOUT)
-    testImplementation(TestLibraries.JUNIT)
-    androidTestImplementation(TestLibraries.ANDROID_JUNIT)
-    androidTestImplementation(TestLibraries.ESPRESSO)
+
+    implementation(Libraries.HILT)
+    kapt(Libraries.HILT_ANNOTATION)
 }

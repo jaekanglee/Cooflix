@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.hjiee.cooflix">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name="app.BaseApplication"
         android:allowBackup="true"

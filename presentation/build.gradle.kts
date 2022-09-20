@@ -7,6 +7,10 @@ plugins {
 
 android {
     compileSdk = AndroidConfig.COMPILE_SDK_VERSION
+
+    dataBinding {
+        isEnabled = true
+    }
 }
 
 dependencies {
@@ -25,4 +29,6 @@ dependencies {
     implementation(Libraries.COROUTINES_CORE)
     implementation(Libraries.COROUTINES_ANDROID)
     implementation(Libraries.LIFECYCLE_VIEWMODEL_KTX)
+
+    implementation(Libraries.GLIDE)
 }

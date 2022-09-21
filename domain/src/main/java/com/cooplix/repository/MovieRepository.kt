@@ -1,7 +1,10 @@
 package com.cooplix.repository
 
 import com.cooplix.model.Movie
+import com.cooplix.model.MovieGenre
 
 interface MovieRepository {
-    fun getMovies(): List<Movie>
+    suspend fun getMovies(): List<Movie>
+
+    suspend fun getMoviesGroup(): Map<MovieGenre, List<Movie>>
 }

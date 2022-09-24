@@ -1,36 +1,46 @@
 package com.cooflix.view
 
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.cooplix.model.Movie
+import com.cooflix.databinding.ViewGenreMoviesBinding
+import com.cooplix.model.GenreMovies
 
-class MoviesAdapter: ListAdapter<Movie, MoviesAdapter.MovieViewHolder>(
-    object : DiffUtil.ItemCallback<Movie>() {
-        override fun areItemsTheSame(oldItem: Movie, newItem: Movie): Boolean {
+class MoviesGroupAdapter: ListAdapter<GenreMovies, MoviesGroupAdapter.MoviesGroupViewHolder>(
+    object : DiffUtil.ItemCallback<GenreMovies>() {
+        override fun areItemsTheSame(oldItem: GenreMovies, newItem: GenreMovies): Boolean {
             return oldItem == newItem
         }
 
-        override fun areContentsTheSame(oldItem: Movie, newItem: Movie): Boolean {
-            return oldItem.id == newItem.id
+        override fun areContentsTheSame(oldItem: GenreMovies, newItem: GenreMovies): Boolean {
+            return oldItem.genre == newItem.genre
         }
 
     }
 ) {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MoviesGroupViewHolder {
+        return MoviesGroupViewHolder(ViewGenreMoviesBinding.inflate(LayoutInflater.from(parent.context)))
+    }
 
-    class MovieViewHolder(v: View): RecyclerView.ViewHolder(v) {
-        fun bind(movie: Movie) {
+    override fun onBindViewHolder(holder: MoviesGroupViewHolder, position: Int) {
+        holder.onBind(getItem(position))
+    }
 
+    class MoviesGroupViewHolder(private val viewBinding: ViewGenreMoviesBinding): RecyclerView.ViewHolder(viewBinding.root) {
+        private val moviesAdapter = MoviesAdapter()
+
+        init {
+            viewBinding.movieRecyclerView.adapter = moviesAdapter
         }
-    }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-
-    }
-
-    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        fun onBind(genreMovies: GenreMovies) {
+            viewBinding.genreTextView.text = genreMovies.genre.name
+            moviesAdapter.submitList(genreMovies.movies)
+        }
     }
 }

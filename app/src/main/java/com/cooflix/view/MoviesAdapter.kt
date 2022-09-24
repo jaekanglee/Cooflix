@@ -1,10 +1,11 @@
 package com.cooflix.view
 
-import android.view.View
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.cooflix.databinding.ViewMovieBinding
 import com.cooplix.model.Movie
 
 class MoviesAdapter: ListAdapter<Movie, MoviesAdapter.MovieViewHolder>(
@@ -20,14 +21,18 @@ class MoviesAdapter: ListAdapter<Movie, MoviesAdapter.MovieViewHolder>(
     }
 ) {
 
-    class MovieViewHolder(v: View): RecyclerView.ViewHolder(v) {
+    class MovieViewHolder(private val viewBinding: ViewMovieBinding): RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(movie: Movie) {
-
+            viewBinding.titleTextView.text = movie.title
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-
+        return MovieViewHolder(
+            ViewMovieBinding.inflate(
+                LayoutInflater.from(parent.context)
+            )
+        )
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.cooflix.databinding.ViewMovieBinding
 import com.cooplix.model.Movie
 
@@ -24,6 +25,7 @@ class MoviesAdapter: ListAdapter<Movie, MoviesAdapter.MovieViewHolder>(
     class MovieViewHolder(private val viewBinding: ViewMovieBinding): RecyclerView.ViewHolder(viewBinding.root) {
         fun bind(movie: Movie) {
             viewBinding.titleTextView.text = movie.title
+            Glide.with(viewBinding.root).load(movie.posterPath).into(viewBinding.posterImageView)
         }
     }
 

@@ -5,7 +5,7 @@ import com.cooplix.repository.MovieRepository
 
 class GetMoviesUseCase(private val movieRepository: MovieRepository) {
 
-    operator fun invoke(): List<Movie> {
+    suspend operator fun invoke(): List<Movie> {
         return movieRepository.getMovies()
     }
 }

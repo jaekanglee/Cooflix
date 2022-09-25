@@ -1,5 +1,6 @@
 package com.cooplix.repository
 
+import com.cooplix.model.GenreMovies
 import com.cooplix.model.Movie
 import com.cooplix.model.MovieGenre
 import com.cooplix.remote.api.MovieService
@@ -11,12 +12,16 @@ class MovieRepositoryImpl(private val movieService: MovieService): MovieReposito
         return movieService.getMovie().toMovies(getMovieGenres()) ?: emptyList()
     }
 
-    override suspend fun getMoviesGroup(): Map<MovieGenre, List<Movie>> {
+    override suspend fun getMoviesGroup(): List<GenreMovies> {
         val movies = movieService.getMovie().toMovies(getMovieGenres())
+        val moviesGroup = movies?.map {
+            GenreMovies(
+                it.genres.firstOrNull() ?: return emptyList(),
+                movies
+            )
+        }
 
-        return movies?.groupBy {
-            it.genres.firstOrNull() ?: return emptyMap()
-        } ?: emptyMap()
+        return moviesGroup ?: emptyList()
     }
 
     private suspend fun getMovieGenres(): List<MovieGenre>? = movieService.getMovieGenres().genres?.mapNotNull {

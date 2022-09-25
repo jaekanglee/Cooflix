@@ -35,7 +35,7 @@ data class MovieResponseDto(
                 id = this.id ?: return null,
                 title = this.title ?: return null,
                 genres = genres ?: return null,
-                posterPath = this.posterPath ?: return null
+                posterPath = "https://www.themoviedb.org/t/p/w440_and_h660_face" + this.posterPath
             )
         }
     }

@@ -8,12 +8,12 @@ import retrofit2.http.Query
 
 interface MovieService {
 
-    @GET("/discover/movie")
+    @GET("discover/movie")
     suspend fun getMovie(
         @Query("api_key") apiKey: String = BuildConfig.api_key
     ): MovieResponseDto
 
-    @GET("/genre/movie/list")
+    @GET("genre/movie/list")
     suspend fun getMovieGenres(
         @Query("api_key") apiKey: String = BuildConfig.api_key
     ): MovieGenresDto
